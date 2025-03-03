@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bildirishnomalar | Admin</title>
+    <title>Admin</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -172,9 +172,9 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
                 <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                   class="nav-link dropdown-toggle"><i class="fas fa-user"></i>
+                   class="nav-link dropdown-toggle">
                     @if(auth()->user())
-                       <span class="btn btn-success">{{ auth()->user()->firstname }}</span>
+                       <span class="btn btn-success">{{ auth()->user()->name }}</span>
                     @endif
 
                 </a>
@@ -290,7 +290,7 @@
             <span class="brand-text font-weight-light">Bildirishnomalar</span>
         </a>
         <div class="sidebar">
-            <!-- Sidebar user panel (optional) -->
+            <!-- Sidebar users panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex ">
                 <div class="image">
                     <img src="{{ asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
@@ -392,10 +392,7 @@
 <script src="{{ asset('dist/js/pages/dashboard.js')}}"></script>
 <script>
     $.widget.bridge('uibutton', $.ui.button)
-<<<<<<< HEAD
-=======
 
->>>>>>> 6bda4a5 (Initial commit)
     table = new DataTable('#dataTable');
 
     duallist = $('.duallistbox').bootstrapDualListbox();

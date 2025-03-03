@@ -1,4 +1,4 @@
-@extends('admin.layouts.admin')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -7,13 +7,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Rollar</h1>
+                    <h1>@lang('cruds.role.title')</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('index') }}">Bosh sahifa</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Rollar</a></li>
-                        <li class="breadcrumb-item active">Tahrirlash</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">@lang('global.home')</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('roleIndex') }}">@lang('cruds.role.title')</a></li>
+                        <li class="breadcrumb-item active">@lang('global.add')</li>
                     </ol>
                 </div>
             </div>
@@ -26,17 +26,16 @@
             <div class="col-lg-8 offset-lg-2 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Tahrirlash</h3>
+                        <h3 class="card-title">@lang('global.add')</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
 
-                        <form action="{{ route('roles.update',$role->id) }}" method="post">
+                        <form action="{{ route('roleCreate') }}" method="post">
                             @csrf
-                            @method('PUT')
                             <div class="form-group">
-                                <label>Nomi</label>
-                                <input type="text" name="name" class="form-control {{ $errors->has('name') ? "is-invalid":"" }}" value="{{ old('name',$role->name) }}" required>
+                                <label>@lang('cruds.role.fields.name')</label>
+                                <input type="text" name="name" class="form-control {{ $errors->has('name') ? "is-invalid":"" }}" value="{{ old('name') }}" required>
                                 @if($errors->has('name') || 1)
                                     <span class="error invalid-feedback">{{ $errors->first('name') }}</span>
                                 @endif
@@ -44,14 +43,17 @@
                             <div class="form-group">
                                 <select multiple="multiple" name="permissions[]" size="30" class="duallistbox" aria-multiselectable="true">
                                     @foreach($permissions as $permission)
-                                        <option value="{{ $permission->name }}" {{ ($role->hasPermissionTo($permission->name)) ? "selected":'' }}>{{ $permission->name   }}</option>
+                                        <option value="{{ $permission->name }}">{{ $permission->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success float-right">Saqlash</button>
-                                <a href="{{ route('roles.index') }}" class="btn btn-default float-left">Bekor qilish</a>
+                                <label>@lang('cruds.role.fields.title')</label>
+                                <input type="text" name="title" class="form-control" value="{{ old('title') }}">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success float-right">@lang('global.save')</button>
+                                <a href="{{ route('roleIndex') }}" class="btn btn-default float-left">@lang('global.cancel')</a>
                             </div>
                         </form>
 

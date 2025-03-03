@@ -19,7 +19,7 @@ class PermissionController extends Controller
 
     public function create()
     {
-        return view('admin.permissions.create');
+        return view('admin.permissions.add');
     }
 
 
@@ -28,16 +28,18 @@ class PermissionController extends Controller
 
         $validated = $request->validate([
             'name' => 'required|string|min:3',
+            'title' => 'required|string|min:3',
         ]);
 
 
         Permission::create([
             'name' => $validated['name'],
+            'title' => $validated['title'],
             'guard_name' => 'web',
         ]);
 
 
-        return redirect()->route('admin.permissions.index')->with('success', 'Permission added successfully');
+        return redirect()->route('permissions.index')->with('success', 'Permission added successfully');
     }
 
     public function edit($id)
@@ -70,7 +72,7 @@ class PermissionController extends Controller
 
         Permission::find($id)->delete();
 
-        return redirect()->route('admin.permissions.index')->with('success', 'Permission deleted successfully');
+        return redirect()->route('permissions.index')->with('success', 'Permission deleted successfully');
 
     }
 

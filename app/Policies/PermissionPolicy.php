@@ -4,63 +4,63 @@ namespace App\Policies;
 
 use App\Models\Permission;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class PermissionPolicy
 {
     /**
-     * Determine whether the user can view any models.
+     * Foydalanuvchi barcha permissionlarni ko'rishi mumkinmi?
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->hasPermission('permission.view');
     }
 
     /**
-     * Determine whether the user can view the model.
+     * Foydalanuvchi ma'lum bir permissionni ko'rishi mumkinmi?
      */
     public function view(User $user, Permission $permission): bool
     {
-        //
+        return $user->hasPermission('permission.view');
     }
 
     /**
-     * Determine whether the user can create models.
+     * Foydalanuvchi permission qo'shishi mumkinmi?
      */
     public function create(User $user): bool
     {
-        //
+        return $user->hasPermission('permission.create');
     }
 
     /**
-     * Determine whether the user can update the model.
+     * Foydalanuvchi permissionni yangilashi mumkinmi?
      */
     public function update(User $user, Permission $permission): bool
     {
-        //
+        return $user->hasPermission('permission.edit');
     }
 
     /**
-     * Determine whether the user can delete the model.
+     * Foydalanuvchi permissionni o'chirishi mumkinmi?
      */
     public function delete(User $user, Permission $permission): bool
     {
-        //
+        return $user->hasPermission('permission.destroy');
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * Foydalanuvchi permissionni tiklashi mumkinmi?
      */
     public function restore(User $user, Permission $permission): bool
     {
-        //
+        return $user->hasPermission('permission.restore');
     }
 
     /**
-     * Determine whether the user can permanently delete the model.
+     * Foydalanuvchi permissionni butunlay o'chirishi mumkinmi?
      */
     public function forceDelete(User $user, Permission $permission): bool
     {
-        //
+        return $user->hasPermission('permission.forceDelete');
     }
 }
+
