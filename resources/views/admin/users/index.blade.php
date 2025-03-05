@@ -1,7 +1,6 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -15,10 +14,9 @@
                     </ol>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
 
-    <!-- Main content -->
     <section class="content">
         <div class="row">
             <div class="col-12">
@@ -27,17 +25,13 @@
                         <h3 class="card-title">Foydalanuvchilar</h3>
                         @can('user.add')
                             <a href="{{ route('users.create') }}" class="btn btn-success btn-sm float-right">
-                                <span class="fas fa-plus-circle"></span>
-                                Qo'shish
+                                <span class="fas fa-plus-circle"></span> Qo'shish
                             </a>
                         @endcan
                     </div>
-                    <!-- /.card-header -->
                     <div class="card-body">
-                        <!-- Data table -->
                         <table id="dataTable"
-                               class="table table-bordered table-striped dataTable dtr-inline table-responsive-lg"
-                               user="grid" aria-describedby="dataTable_info">
+                               class="table table-bordered table-striped dataTable dtr-inline table-responsive-lg">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -55,32 +49,34 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->login }}</td>
                                     <td>
-                                        @foreach($user->roles()->pluck('name') as $role)
-                                            <span class="badge badge-primary">{{ $role }} </span>
+                                        @foreach($user->roles as $role)
+                                            <span class="badge badge-primary">{{ $role->name }}</span>
                                         @endforeach
                                     </td>
 
-                                    {{ dd($user->roles()->pluck('name')
-) }}
                                     <td>
-                                        @foreach($user->getPermissionsViaRoles()->pluck('title') as $permission)
-                                            <span class="badge badge-secondary">{{ $permission }}</span>
+                                        @foreach($user->getAllPermissions() as $permission)
+                                            <span class="badge badge-info">{{ $permission->name }}</span>
                                         @endforeach
                                     </td>
+
+
                                     <td class="text-center">
                                         @can('user.delete')
-                                            <form action="{{ route('users.destroy',$user->id) }}" method="post">
+                                            <form action="{{ route('users.destroy', $user->id) }}" method="post">
                                                 @csrf
                                                 <div class="btn-group">
                                                     @can('user.edit')
-                                                        <a href="{{ route('users.edit',$user->id) }}" type="button"
-                                                           class="btn btn-primary btn-sm"><i
-                                                                class="fa-solid fa-edit"></i></a>
+                                                        <a href="{{ route('users.edit', $user->id) }}"
+                                                           class="btn btn-primary btn-sm">
+                                                            <i class="fa-solid fa-edit"></i>
+                                                        </a>
                                                     @endcan
                                                     <input name="_method" type="hidden" value="DELETE">
                                                     <button type="button" class="btn btn-danger btn-sm"
-                                                            onclick="if (confirm('Вы уверены?')) { this.form.submit() } ">
-                                                        <i class="fa-solid fa-trash"></i></button>
+                                                            onclick="if (confirm('Ishonchingiz komilmi?')) { this.form.submit() }">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </button>
                                                 </div>
                                             </form>
                                         @endcan
@@ -90,13 +86,8 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- /.card-body -->
                 </div>
-                <!-- /.card -->
             </div>
-            <!-- /.col -->
         </div>
-        <!-- /.row -->
     </section>
-    <!-- /.content -->
 @endsection

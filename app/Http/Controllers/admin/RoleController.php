@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Role;
-use App\Models\Permission;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 
 class RoleController extends Controller
@@ -14,6 +14,7 @@ class RoleController extends Controller
     public function index()
     {
         abort_if_forbidden('roles.show');
+
         if (auth()->user()->roles[0]->name) {
             $roles = Role::whereNotIn('name', ['super admin'])->get();;
             return view('admin.roles.index', compact('roles'));
@@ -46,11 +47,12 @@ class RoleController extends Controller
         ]);
 
         $permissions = $request->get('permissions');
-        if ($permissions) {
-            foreach ($permissions as $key => $item) {
-                $role->givePermissionTo($item);
-            }
-        }
+        $role->syncPermissions($permissions);
+//        if ($permissions) {
+//            foreach ($permissions as $key => $item) {
+//                $role->givePermissionTo($item);
+//            }
+//        }
 
 
         return redirect()->route('admin.roles.index')->with('success', 'Role added successfully');
@@ -61,7 +63,7 @@ class RoleController extends Controller
         abort_if_forbidden('roles.edit');
         $role = Role::find($id);
 
-        abort_if($role->name == 'Super Admin' && !auth()->user()->hasRole('Super Admin'), 403);
+        abort_if($role->name == 'super admin' && !auth()->user()->hasRole('super admin'), 403);
 
         $permissions = Permission::all();
 
@@ -81,7 +83,7 @@ class RoleController extends Controller
         unset($request['permissions']);
         $role = Role::find($id);
 
-        abort_if_forbidden($role->name == 'super Admin' && !auth()->user()->hasRole('super Admin'),403);
+        abort_if_forbidden($role->name == 'super admin' && !auth()->user()->hasRole('super admin'),403);
 
         $role->fill($request->all());
         $role->syncPermissions($permissions);

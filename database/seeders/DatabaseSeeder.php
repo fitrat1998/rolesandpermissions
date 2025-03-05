@@ -18,5 +18,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test UserController',
         //     'email' => 'test@example.com',
         // ]);
+
+
+        $this->call([RolesAndPermissionsSeeder::class]);
     }
 }

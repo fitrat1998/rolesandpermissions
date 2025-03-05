@@ -314,10 +314,10 @@
     <!-- /.content -->
     </div>
     <footer class="main-footer">
-        <strong>Copyright &copy; 2024 <a href="https://it-markaz.samdu.uz/" target="_blank">IT MARKAZ</a>.</strong>
+        <strong>Copyright &copy; 2024 <a href="https://t.me/Kingsherazi" target="_blank">LoiqDev</a>.</strong>
         Barcha Huquqlar Himoyalangan
         <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.2.0
+            <b>Version</b> 2.0.0
         </div>
     </footer>
 

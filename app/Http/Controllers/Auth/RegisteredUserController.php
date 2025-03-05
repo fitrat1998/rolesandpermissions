@@ -62,7 +62,7 @@ class RegisteredUserController extends Controller
             $user->assignRole('Super Admin');
         }
 
-        // "user" roli mavjud bo'lmasa, uni yaratish
+
         if (!Role::where('name', 'user')->exists()) {
             Role::create([
                 'name' => 'user',
@@ -71,7 +71,7 @@ class RegisteredUserController extends Controller
             ]);
         }
 
-        // Har bir foydalanuvchiga "user" rolini berish
+
         $user->assignRole('user');
 
         event(new Registered($user));

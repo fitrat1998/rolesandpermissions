@@ -15,7 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+
+
+        $users = User::with('roles')->whereDoesntHave('roles', function ($query) {
+            $query->where('name', 'super admin');
+        })->get();
+
 
         return view('admin.users.index', compact('users'));
     }
