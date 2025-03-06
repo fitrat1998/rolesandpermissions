@@ -1,5 +1,5 @@
 /*
-* My functions for admin panel
+* My functions for adminsuper panel
 */
 
 function preloader() {

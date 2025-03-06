@@ -13,13 +13,13 @@ class PermissionController extends Controller
     {
         $permissions = Permission::all();
 
-        return view('admin.permissions.index',compact('permissions'));
+        return view('adminsuper.permissions.index',compact('permissions'));
     }
 
 
     public function create()
     {
-        return view('admin.permissions.add');
+        return view('adminsuper.permissions.add');
     }
 
 
@@ -46,7 +46,7 @@ class PermissionController extends Controller
     {
         $permission = Permission::find($id);
 
-        return view('admin.permissions.edit',compact('permission'));
+        return view('adminsuper.permissions.edit',compact('permission'));
     }
 
     public function update(Request $request,$id)
@@ -62,7 +62,7 @@ class PermissionController extends Controller
         ]);
 
 
-        return redirect()->route('admin.permissions.index')->with('success', 'Permission updated successfully');
+        return redirect()->route('adminsuper.permissions.index')->with('success', 'Permission updated successfully');
 
 
     }

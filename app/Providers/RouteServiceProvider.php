@@ -54,10 +54,10 @@ class RouteServiceProvider extends ServiceProvider
         $user = Auth::user();
         Log::info('Foydalanuvchi:', ['user' => $user]);
 
-        if ($user->hasRole('super admin')) {
-            return '/super-admin';
-        } elseif ($user->hasRole('admin')) {
-            return '/admin';
+        if ($user->hasRole('super adminsuper')) {
+            return '/super-adminsuper';
+        } elseif ($user->hasRole('adminsuper')) {
+            return '/adminsuper';
         }
 
         return self::HOME; // Default: /dashboard

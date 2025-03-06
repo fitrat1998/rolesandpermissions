@@ -7,12 +7,10 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-// Asosiy sahifaga kirish
 Route::get('/', function () {
     return redirect('/index');
 });
 
-// Index sahifasi
 Route::get('/index', function () {
     if (Auth::check()) {
         $user = Auth::user();
@@ -42,15 +40,15 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', UserController::class);
 
     Route::middleware('role:super admin')->get('/super-admin', function () {
-        return view('admin.index');
-    })->name('admin.index');
+        return view('adminsuper.index');
+    })->name('adminsuper.index');
 
     Route::middleware('role:admin')->get('/admin', function () {
         return view('admin.index');
     })->name('admin.index');
 
     Route::get('/dashboard', function () {
-        return view('admin.index');
+        return view('dashboard');
     })->name('dashboard');
 });
 

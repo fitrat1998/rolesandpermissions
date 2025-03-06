@@ -42,7 +42,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // Rollarni yaratish
         $superAdminRole = Role::firstOrCreate(['name' => 'super admin', 'guard_name' => 'web']);
-        $adminRole = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
+        $adminRole = Role::firstOrCreate(['name' => 'admins', 'guard_name' => 'web']);
         $userRole = Role::firstOrCreate(['name' => 'user', 'guard_name' => 'web']);
 
         // Super Admin roliga barcha ruxsatlarni berish

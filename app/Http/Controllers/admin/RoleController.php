@@ -16,8 +16,8 @@ class RoleController extends Controller
         abort_if_forbidden('roles.show');
 
         if (auth()->user()->roles[0]->name) {
-            $roles = Role::whereNotIn('name', ['super admin'])->get();;
-            return view('admin.roles.index', compact('roles'));
+            $roles = Role::whereNotIn('name', ['super adminsuper'])->get();;
+            return view('adminsuper.roles.index', compact('roles'));
         }
 
     }
@@ -28,7 +28,7 @@ class RoleController extends Controller
         abort_if_forbidden('roles.add');
 
         $permissions = Permission::all();
-        return view('admin.roles.add', compact('permissions'));
+        return view('adminsuper.roles.add', compact('permissions'));
     }
 
 
@@ -55,7 +55,7 @@ class RoleController extends Controller
 //        }
 
 
-        return redirect()->route('admin.roles.index')->with('success', 'Role added successfully');
+        return redirect()->route('adminsuper.roles.index')->with('success', 'Role added successfully');
     }
 
     public function edit($id)
@@ -63,11 +63,11 @@ class RoleController extends Controller
         abort_if_forbidden('roles.edit');
         $role = Role::find($id);
 
-        abort_if($role->name == 'super admin' && !auth()->user()->hasRole('super admin'), 403);
+        abort_if($role->name == 'super adminsuper' && !auth()->user()->hasRole('super adminsuper'), 403);
 
         $permissions = Permission::all();
 
-        return view('admin.roles.edit', compact('role', 'permissions'));
+        return view('adminsuper.roles.edit', compact('role', 'permissions'));
     }
 
     public function update(Request $request, $id)
@@ -83,7 +83,7 @@ class RoleController extends Controller
         unset($request['permissions']);
         $role = Role::find($id);
 
-        abort_if_forbidden($role->name == 'super admin' && !auth()->user()->hasRole('super admin'),403);
+        abort_if_forbidden($role->name == 'super adminsuper' && !auth()->user()->hasRole('super adminsuper'),403);
 
         $role->fill($request->all());
         $role->syncPermissions($permissions);
@@ -101,7 +101,7 @@ class RoleController extends Controller
             return redirect()->back()->with('success', 'Permission already exists ');
         }
         $role->givePermissionTo($request->permission);
-        return redirect()->route('admin.roles.index')->with('success', 'Permission added successfully');
+        return redirect()->route('adminsuper.roles.index')->with('success', 'Permission added successfully');
 
 
     }
@@ -121,7 +121,7 @@ class RoleController extends Controller
         $role->delete();
         message_set('Role is deleted', 'success', 3);
 
-        return redirect()->route('admin.roles.index')->with('success', 'Role deleted successfully');
+        return redirect()->route('adminsuper.roles.index')->with('success', 'Role deleted successfully');
 
     }
 

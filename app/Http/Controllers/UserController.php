@@ -18,11 +18,11 @@ class UserController extends Controller
 
 
         $users = User::with('roles')->whereDoesntHave('roles', function ($query) {
-            $query->where('name', 'super admin');
+            $query->where('name', 'super adminsuper');
         })->get();
 
 
-        return view('admin.users.index', compact('users'));
+        return view('adminsuper.users.index', compact('users'));
     }
 
     /**
@@ -34,7 +34,7 @@ class UserController extends Controller
 
         $roles = Role::where('name', '!=', 'Super Admin')->get();
 
-        return view('admin.users.add', compact('roles'));
+        return view('adminsuper.users.add', compact('roles'));
 
     }
 
@@ -83,14 +83,14 @@ class UserController extends Controller
 
         $user = User::find($id);
 
-        if ($user->hasRole('super admin') && !auth()->user()->hasRole('super admin')) {
+        if ($user->hasRole('super adminsuper') && !auth()->user()->hasRole('super adminsuper')) {
             message_set("У вас нет разрешения на редактирование администратора", 'error', 5);
             return redirect()->back();
         }
 
-        $roles = Role::where('name', '!=', 'super admin')->get();
+        $roles = Role::where('name', '!=', 'super adminsuper')->get();
 
-        return view('admin.users.edit', compact('user', 'roles'));
+        return view('adminsuper.users.edit', compact('user', 'roles'));
     }
 
     /**
