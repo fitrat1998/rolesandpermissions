@@ -33,6 +33,7 @@
 
                         <form action="{{ route('permissions.update',$permission->id) }}" method="post">
                             @csrf
+                            @method('PUT')
                             <div class="form-group">
                                 <label>Nomi</label>
                                 <input type="text" name="name" class="form-control {{ $errors->has('name') ? "is-invalid":"" }}" value="{{ old('name',$permission->name) }}" required>

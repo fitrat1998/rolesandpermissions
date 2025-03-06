@@ -62,7 +62,7 @@ class PermissionController extends Controller
         ]);
 
 
-        return redirect()->route('adminsuper.permissions.index')->with('success', 'Permission updated successfully');
+        return redirect()->route('permissions.index')->with('success', 'Permission updated successfully');
 
 
     }

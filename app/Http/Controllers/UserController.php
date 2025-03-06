@@ -15,11 +15,18 @@ class UserController extends Controller
      */
     public function index()
     {
+        $roleName = auth()->user()->roles->first()->name;
 
+         if ($roleName == 'admin') {
+            $users = User::with('roles')->whereDoesntHave('roles', function ($query) {
+                $query->whereIn('name', ['admin', 'super admin']);
+            })->get();
+        } else {
+            $users = User::with('roles')->whereDoesntHave('roles', function ($query) {
+                $query->where('name', 'super admin');
+            })->get();
+        }
 
-        $users = User::with('roles')->whereDoesntHave('roles', function ($query) {
-            $query->where('name', 'super adminsuper');
-        })->get();
 
 
         return view('adminsuper.users.index', compact('users'));
@@ -32,7 +39,7 @@ class UserController extends Controller
     {
         abort_if_forbidden('user.add');
 
-        $roles = Role::where('name', '!=', 'Super Admin')->get();
+        $roles = Role::where('name', '!=', 'super admin')->get();
 
         return view('adminsuper.users.add', compact('roles'));
 
@@ -83,12 +90,12 @@ class UserController extends Controller
 
         $user = User::find($id);
 
-        if ($user->hasRole('super adminsuper') && !auth()->user()->hasRole('super adminsuper')) {
+        if ($user->hasRole('super admin') && !auth()->user()->hasRole('super admin')) {
             message_set("У вас нет разрешения на редактирование администратора", 'error', 5);
             return redirect()->back();
         }
 
-        $roles = Role::where('name', '!=', 'super adminsuper')->get();
+        $roles = Role::where('name', '!=', 'super admin')->get();
 
         return view('adminsuper.users.edit', compact('user', 'roles'));
     }
@@ -142,7 +149,7 @@ class UserController extends Controller
             return redirect()->back();
         }
 
-        if ($user->hasRole('Super Admin') && !auth()->user()->hasRole('Super Admin')) {
+        if ($user->hasRole('super admin') && !auth()->user()->hasRole('super admin')) {
             message_set("У вас нет разрешения на редактирование администратора", 'error', 5);
             return redirect()->back();
         }
