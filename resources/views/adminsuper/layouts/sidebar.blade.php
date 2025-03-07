@@ -74,7 +74,8 @@
                             <a href="{{ route('changeLocale', 'uz') }}"
                                class="nav-link {{ app()->getLocale() == 'uz' ? 'active' : '' }}">
 
-                                <p><img src="{{ asset('uz.png') }}" alt="lang" width="24"> {{ __('messages.lang.uz') }}</p>
+                                <p><img src="{{ asset('uz.png') }}" alt="lang" width="24"> {{ __('messages.lang.uz') }}
+                                </p>
                             </a>
                         </li>
 
@@ -82,7 +83,8 @@
                             <a href="{{ route('changeLocale', 'en') }}"
                                class="nav-link {{ app()->getLocale() == 'en' ? 'active' : '' }}">
 
-                                <p><img src="{{ asset('en.png') }}" alt="lang" width="24"> {{ __('messages.lang.en') }}</p>
+                                <p><img src="{{ asset('en.png') }}" alt="lang" width="24"> {{ __('messages.lang.en') }}
+                                </p>
                             </a>
                         </li>
 
@@ -90,10 +92,19 @@
                             <a href="{{ route('changeLocale', 'ru') }}"
                                class="nav-link {{ app()->getLocale() == 'ru' ? 'active' : '' }}">
 
-                                <p><img src="{{ asset('ru.png') }}" alt="lang" width="24"> {{ __('messages.lang.ru') }}</p>
+                                <p><img src="{{ asset('ru.png') }}" alt="lang" width="24"> {{ __('messages.lang.ru') }}
+                                </p>
                             </a>
                         </li>
                     </ul>
+                </li>
+
+                <!-- Departments -->
+                <li class="nav-item"{{ request()->routeIs('departments.index') ? 'active' : '' }}">
+                    <a href="{{ route('departments.index') }}" class="nav-link">
+                        <i class="fa fa-building"></i>
+                        <span>{{ __('messages.departments.title') }}</span>
+                    </a>
                 </li>
 
             </ul>

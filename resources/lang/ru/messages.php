@@ -58,4 +58,13 @@ return [
         'permission_delete' => 'Удалить разрешение',
         'permission_view'   => 'Просмотр разрешения',
     ],
+
+    'departments' => [
+        'title'             => 'Отделы',
+        'department_create' => 'Добавить отдел',
+        'department_edit'   => 'Редактировать отдел',
+        'department_delete' => 'Удалить отдел',
+        'department_view'   => 'Просмотр отдела',
+    ],
+
 ];

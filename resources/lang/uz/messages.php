@@ -59,5 +59,14 @@ return [
         'permission_view' => 'Ruxsatni ko\'rish',
     ],
 
+    'departments' => [
+        'title'             => 'Bo\'limlar',
+        'department_create' => 'Bo\'lim qo\'shish',
+        'department_edit'   => 'Bo\'limni tahrirlash',
+        'department_delete' => 'Bo\'limni o\'chirish',
+        'department_view'   => 'Bo\'limni ko\'rish',
+    ],
+
+
 
 ];

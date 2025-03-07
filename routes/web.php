@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -39,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('permissions', PermissionController::class);
     Route::post('roles/{id}/give-permission', [RoleController::class, 'givePermission'])->name('roles.givePermission');
     Route::resource('roles', RoleController::class);
+    Route::resource('departments', DepartmentController::class);
 
     Route::resource('users', UserController::class);
 

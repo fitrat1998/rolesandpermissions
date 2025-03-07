@@ -58,4 +58,12 @@ return [
         'permission_delete' => 'Delete Permission',
         'permission_view'   => 'View Permission',
     ],
+
+    'departments' => [
+        'title'             => 'Departments',
+        'department_create' => 'Add Departments',
+        'department_edit'   => 'Edit Departments',
+        'department_delete' => 'Delete Departments',
+        'department_view'   => 'View Departments',
+    ],
 ];
