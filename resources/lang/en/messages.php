@@ -1,8 +1,6 @@
 <?php
 
 return [
-
-
     'home'                         => 'Home',
     'system'                       => 'System',
     'name'                         => 'Name',
@@ -14,15 +12,19 @@ return [
     'login'                        => 'Login',
     'password'                     => 'Password',
     'confirm_password'             => 'Confirm Password',
-    'success_user_add_en'          => 'User added successfully',
-    'success_role_add_en'          => 'Role added successfully',
-    'success_permission_add_en'    => 'Permission added successfully',
-    'success_user_edit_en'         => 'User edited successfully',
-    'success_role_edit_en'         => 'Role edited successfully',
-    'success_permission_edit_en'   => 'Permission edited successfully',
-    'success_user_delete_en'       => 'User deleted successfully',
-    'success_role_delete_en'       => 'Role deleted successfully',
-    'success_permission_delete_en' => 'Permission deleted successfully',
+    'sign_in'                      => 'Sign In',
+    'sign_up'                      => 'Sign Up',
+    'remember_me'                  => 'Remember me',
+    'forget_password'              => 'Forgot your password?',
+    'success_user_add'             => 'User added successfully',
+    'success_role_add'             => 'Role added successfully',
+    'success_permission_add'       => 'Permission added successfully',
+    'success_user_edit'            => 'User edited successfully',
+    'success_role_edit'            => 'Role edited successfully',
+    'success_permission_edit'      => 'Permission edited successfully',
+    'success_user_delete'          => 'User deleted successfully',
+    'success_role_delete'          => 'Role deleted successfully',
+    'success_permission_delete'    => 'Permission deleted successfully',
 
     'lang' => [
         'title' => 'Choose language',

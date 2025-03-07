@@ -1,57 +1,74 @@
-<div
-    class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition">
-    <nav class="mt-2">
-        <ul class="nav sidebar-toggle nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview"
-            role="menu" data-accordion="true">
+<div class="sidebar-menu">
+    <ul class="menu">
+        <li class="sidebar-title">{{ __('Menu') }}</li>
 
-            <!-- Ruxsatlar bo'limi -->
-            @canany(['permission.show', 'roles.show', 'user.show'])
-                <li class="nav-item has-treeview {{ Request::is('permissions*') || Request::is('roles*') || Request::is('users*') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ Request::is('permissions*') || Request::is('roles*') || Request::is('users*') ? 'active' : '' }}">
-                        <i class="fas fa-users-cog"></i>
-                        <p>
-                            {{ __('Ruxsatlar') }}
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
+        <!-- Dashboard -->
+        <li class="sidebar-item {{ request()->routeIs('index') ? 'active' : '' }}">
+            <a href="{{ route('index') }}" class="sidebar-link">
+                <i class="bi bi-grid-fill"></i>
+                <span>{{ __('messages.home') }}</span>
+            </a>
+        </li>
+
+        <!-- System Management -->
+        @canany(['permission.show', 'roles.show', 'user.show'])
+            <li class="sidebar-item has-sub {{ request()->routeIs('system.*') ? 'active' : '' }}">
+                <a href="#" class="sidebar-link">
+                    <i class="bi bi-gear-fill"></i>
+                    <span>{{ __('messages.system') }}</span>
+                </a>
+
+                <ul class="submenu">
+                    @can('permission.show')
+                        <li class="submenu-item {{ request()->routeIs('permissions.index') ? 'active' : '' }}">
+                            <a href="{{ route('permissions.index') }}" class="submenu-link">{{ __('Permissions') }}</a>
+                        </li>
+                    @endcan
+
+                    @can('roles.show')
+                        <li class="submenu-item {{ request()->routeIs('roles.index') ? 'active' : '' }}">
+                            <a href="{{ route('roles.index') }}" class="submenu-link">{{ __('Roles') }}</a>
+                        </li>
+                    @endcan
+
+                    @can('user.show')
+                        <li class="submenu-item {{ request()->routeIs('users.index') ? 'active' : '' }}">
+                            <a href="{{ route('users.index') }}" class="submenu-link">{{ __('Users') }}</a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcanany
+
+        <!-- Language Selection -->
+        <li class="sidebar-item has-sub">
+            <a href="#" class="sidebar-link">
+                <i class="bi bi-translate"></i>
+                <span>{{ __('messages.lang.title') }}</span>
+            </a>
+
+            <ul class="submenu">
+                <li class="submenu-item {{ app()->getLocale() == 'uz' ? 'active' : '' }}">
+                    <a href="{{ route('changeLocale', 'uz') }}" class="submenu-link">
+                        <img src="{{ asset('uz.png') }}" alt="lang" width="24"> {{ __('messages.lang.uz') }}
                     </a>
-                    <ul class="nav nav-treeview"
-                        style="display: {{ Request::is('permissions*') || Request::is('roles*') || Request::is('users*') ? 'block' : 'none' }};">
-
-                        @can('permission.show')
-                            <li class="nav-item">
-                                <a href="{{ route('permissions.index') }}"
-                                   class="nav-link {{ Request::is('permissions*') ? 'active' : '' }}">
-                                    <i class="fas fa-key"></i>
-                                    <p>{{ __('Ruxsatlar') }}</p>
-                                </a>
-                            </li>
-                        @endcan
-
-                        @can('roles.show')
-                            <li class="nav-item">
-                                <a href="{{ route('roles.index') }}"
-                                   class="nav-link {{ Request::is('roles*') ? 'active' : '' }}">
-                                    <i class="fas fa-user-lock"></i>
-                                    <p>{{ __('Rollar') }}</p>
-                                </a>
-                            </li>
-                        @endcan
-
-                        @can('user.show')
-                            <li class="nav-item">
-                                <a href="{{ route('users.index') }}"
-                                   class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
-                                    <i class="fas fa-user-friends"></i>
-                                    <p>{{ __('Foydalanuvchilar') }}</p>
-                                </a>
-                            </li>
-                        @endcan
-                    </ul>
                 </li>
-            @endcanany
+
+                <li class="submenu-item {{ app()->getLocale() == 'en' ? 'active' : '' }}">
+                    <a href="{{ route('changeLocale', 'en') }}" class="submenu-link">
+                        <img src="{{ asset('en.png') }}" alt="lang" width="24"> {{ __('messages.lang.en') }}
+                    </a>
+                </li>
+
+                <li class="submenu-item {{ app()->getLocale() == 'ru' ? 'active' : '' }}">
+                    <a href="{{ route('changeLocale', 'ru') }}" class="submenu-link">
+                        <img src="{{ asset('ru.png') }}" alt="lang" width="24"> {{ __('messages.lang.ru') }}
+                    </a>
+                </li>
+            </ul>
+        </li>
 
 
 
-        </ul>
-    </nav>
+    </ul>
 </div>

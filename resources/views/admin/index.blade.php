@@ -1,96 +1,103 @@
-@extends('adminsuper.layouts.admin')
+@extends('admin.layouts.admin')
 
 @section('content')
 
 
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Dashbord</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Bosh sahifa</a></li>
 
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
-                <div class="row">
-{{--                    <div class="col-lg-3 col-6">--}}
-{{--                        <!-- small box -->--}}
-{{--                        <div class="small-box bg-info">--}}
-{{--                            <div class="inner">--}}
-{{--                                <h3>50</h3>--}}
-
-{{--                                <p>Yangi bildirishnomalar</p>--}}
-{{--                            </div>--}}
-{{--                            <div class="icon">--}}
-{{--                                <i class="fa fa-star"></i>--}}
-{{--                            </div>--}}
-{{--                            <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <!-- ./col -->--}}
-{{--                    <div class="col-lg-3 col-6">--}}
-{{--                        <!-- small box -->--}}
-{{--                        <div class="small-box bg-success">--}}
-{{--                            <div class="inner">--}}
-{{--                                <h3>53</h3>--}}
-
-{{--                                <p>Qabul qilinganlar</p>--}}
-{{--                            </div>--}}
-{{--                            <div class="icon">--}}
-{{--                                <i class="fa fa-plus"></i>--}}
-{{--                            </div>--}}
-{{--                            <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <!-- ./col -->--}}
-{{--                    <div class="col-lg-3 col-6">--}}
-{{--                        <!-- small box -->--}}
-{{--                        <div class="small-box bg-warning">--}}
-{{--                            <div class="inner">--}}
-{{--                                <h3>44</h3>--}}
-
-{{--                                <p>Hafta davomidagi bildirishnomalar</p>--}}
-{{--                            </div>--}}
-{{--                            <div class="icon">--}}
-{{--                                <i class="fa fa-folder-open"></i>--}}
-{{--                            </div>--}}
-{{--                            <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <!-- ./col -->--}}
-{{--                    <div class="col-lg-3 col-6">--}}
-{{--                        <!-- small box -->--}}
-{{--                        <div class="small-box bg-danger">--}}
-{{--                            <div class="inner">--}}
-{{--                                <h3>65</h3>--}}
-
-{{--                                <p>Rad etilgan bildirishnomnalar</p>--}}
-{{--                            </div>--}}
-{{--                            <div class="icon">--}}
-{{--                                <i class="fa fa-ban"></i>--}}
-{{--                            </div>--}}
-{{--                            <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <!-- ./col -->--}}
+            <div class="row">
+                <div class="col-6 col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body px-4 py-4-5">
+                            <div class="row">
+                                <div
+                                    class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                    <div class="stats-icon purple mb-2">
+                                        <i class="iconly-boldShow"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                    <h6 class="text-muted font-semibold">Profile Views</h6>
+                                    <h6 class="font-extrabold mb-0">112.000</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <div class="col-6 col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body px-4 py-4-5">
+                            <div class="row">
+                                <div
+                                    class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                    <div class="stats-icon blue mb-2">
+                                        <i class="iconly-boldProfile"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                    <h6 class="text-muted font-semibold">Followers</h6>
+                                    <h6 class="font-extrabold mb-0">183.000</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body px-4 py-4-5">
+                            <div class="row">
+                                <div
+                                    class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                    <div class="stats-icon green mb-2">
+                                        <i class="iconly-boldAdd-User"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                    <h6 class="text-muted font-semibold">Following</h6>
+                                    <h6 class="font-extrabold mb-0">80.000</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body px-4 py-4-5">
+                            <div class="row">
+                                <div
+                                    class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                    <div class="stats-icon red mb-2">
+                                        <i class="iconly-boldBookmark"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                    <h6 class="text-muted font-semibold">Saved Post</h6>
+                                    <h6 class="font-extrabold mb-0">112</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                <!-- /.row (main row) -->
-            </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Profile Visit</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="chart-profile-visit"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+
+            </div>
+
+
+
+
 
 @endsection
