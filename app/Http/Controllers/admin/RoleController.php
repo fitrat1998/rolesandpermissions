@@ -55,7 +55,7 @@ class RoleController extends Controller
         }
 
 
-        return redirect()->route('roles.index')->with('success', 'Role added successfully');
+        return redirect()->route('roles.index')->with('success',__('messages.success_role_add'));
     }
 
     public function edit($id)
@@ -63,7 +63,8 @@ class RoleController extends Controller
         abort_if_forbidden('roles.edit');
         $role = Role::find($id);
 
-        abort_if($role->name == 'super adminsuper' && !auth()->user()->hasRole('super adminsuper'), 403);
+
+        abort_if($role->name == 'super admin' , 403);
 
         $permissions = Permission::all();
 
@@ -79,7 +80,7 @@ class RoleController extends Controller
             'name' => 'required|string|min:3',
         ]);
 
-        abort_if(!auth()->user()->hasRole('super adminsuper'), 403);
+        abort_if(!auth()->user()->hasRole('super admin'), 403);
 
         $permissions = $request->get('permissions');
         unset($request['permissions']);
@@ -90,7 +91,7 @@ class RoleController extends Controller
         $role->syncPermissions($permissions);
         $role->save();
 
-        return redirect()->route('roles.index')->with('success', 'Role updated successfully');
+        return redirect()->route('roles.index')->with('success', __('messages.success_role_edit'));
 
 
     }
@@ -121,7 +122,7 @@ class RoleController extends Controller
         $role->delete();
         message_set('Role is deleted', 'success', 3);
 
-        return redirect()->route('roles.index')->with('success', 'Role deleted successfully');
+        return redirect()->route('roles.index')->with('success', __('messages.success_role_delete'));
 
     }
 

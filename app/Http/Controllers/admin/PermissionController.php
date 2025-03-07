@@ -39,7 +39,7 @@ class PermissionController extends Controller
         ]);
 
 
-        return redirect()->route('permissions.index')->with('success', 'Permission added successfully');
+        return redirect()->route('permissions.index')->with('success', __('messages.success_permission_add'));
     }
 
     public function edit($id)
@@ -62,7 +62,7 @@ class PermissionController extends Controller
         ]);
 
 
-        return redirect()->route('permissions.index')->with('success', 'Permission updated successfully');
+        return redirect()->route('permissions.index')->with('success', __('messages.success_permission_edit'));
 
 
     }
@@ -72,7 +72,7 @@ class PermissionController extends Controller
 
         Permission::find($id)->delete();
 
-        return redirect()->route('permissions.index')->with('success', 'Permission deleted successfully');
+        return redirect()->route('permissions.index')->with('success', __('messages.success_permission_delete'));
 
     }
 

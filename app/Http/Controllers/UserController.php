@@ -69,7 +69,7 @@ class UserController extends Controller
         $user->assignRole($request->get('roles'));
 
 
-        return redirect()->route('users.index')->with('success', 'Foyfdalanuvchi muvaffaqiyatli qo`shilid');
+        return redirect()->route('users.index')->with('success', __('messages.success_user_add'));
 
     }
 
@@ -130,7 +130,7 @@ class UserController extends Controller
 
 
         if (auth()->user()->can('user.edit'))
-            return redirect()->route('users.index')->with('success', 'Foyfdalanuvchi muvaffaqiyatli tahrirlandi');
+            return redirect()->route('users.index')->with('success', __('messages.success_user_edit'));
         else
             return redirect()->route('index');
     }
@@ -159,7 +159,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', 'Foydalanuvchi muvaffaqiyatli o`chirildi.');
+        return redirect()->route('users.index')->with('success', __('messages.success_user_delete'));
 
     }
 }
