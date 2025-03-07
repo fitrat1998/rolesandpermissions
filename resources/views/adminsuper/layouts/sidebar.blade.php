@@ -33,7 +33,7 @@
                                 <a href="{{ route('permissions.index') }}"
                                    class="nav-link {{ Request::is('permission*') ? 'active' : '' }}">
                                     <i class="fas fa-key"></i>
-                                    <p>{{  __('messages.permissions') }}</p>
+                                    <p>{{  __('messages.permissions.title') }}</p>
                                 </a>
                             </li>
                         @endcan
@@ -43,7 +43,7 @@
                                 <a href="{{ route('roles.index') }}"
                                    class="nav-link {{ Request::is('role*') ? 'active' : '' }}">
                                     <i class="fas fa-user-lock"></i>
-                                    <p>{{  __('messages.roles') }}</p>
+                                    <p>{{  __('messages.roles.title') }}</p>
                                 </a>
                             </li>
                         @endcan
@@ -53,7 +53,7 @@
                                 <a href="{{ route('users.index') }}"
                                    class="nav-link {{ Request::is('user*') ? 'active' : '' }}">
                                     <i class="fas fa-user-friends"></i>
-                                    <p>{{  __('messages.users') }}</p>
+                                    <p>{{  __('messages.users.title') }}</p>
                                 </a>
                             </li>
                         @endcan

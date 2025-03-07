@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Ruxsatlar</h1>
+                    <h1>{{ __('messages.permissions.title') }}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('index') }}">Bosh sahifa</a></li>
-                        <li class="breadcrumb-item active">Ruxstalar</li>
+                        <li class="breadcrumb-item"><a href="{{ route('index') }}">{{ __('messages.home') }}</a></li>
+                        <li class="breadcrumb-item active">{{ __('messages.permissions.title') }}</li>
                     </ol>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                         @can('permission.add')
                             <a href="{{ route('permissions.create') }}" class="btn btn-success btn-sm float-right">
                                 <span class="fas fa-plus-circle"></span>
-                                Qo'shish
+                                {{ __('messages.permissions.permission_create') }}
                             </a>
                         @endcan
                     </div>
@@ -41,10 +41,10 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nomi</th>
-                                <th>Sarlavha</th>
-                                <th>Rollar</th>
-                                <th class="w-25">Amallar</th>
+                                <th>{{ __('messages.name') }}</th>
+                                <th>{{ __('messages.title') }}</th>
+                                <th>{{ __('messages.roles.title') }}</th>
+                                <th class="w-25">{{ __('messages.action') }}</th>
                             </tr>
                             </thead>
                             <tbody>

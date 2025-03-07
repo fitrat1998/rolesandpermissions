@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Rollar</h1>
+                    <h1>{{ __('messages.roles.title') }}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('index') }}">Bosh sahifa</a></li>
-                        <li class="breadcrumb-item active">Rollar</li>
+                        <li class="breadcrumb-item"><a href="{{ route('index') }}">{{ __('messages.home') }}</a></li>
+                        <li class="breadcrumb-item active">{{ __('messages.roles.title') }}</li>
                     </ol>
                 </div>
             </div>
@@ -24,11 +24,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Rollar</h3>
+                        <h3 class="card-title">{{ __('messages.roles.title') }}</h3>
                         @can('roles.add')
                             <a href="{{ route('roles.create') }}" class="btn btn-success btn-sm float-right">
                                 <span class="fas fa-plus-circle"></span>
-                                Qo'shish
+                                {{ __('messages.roles.role_create') }}
                             </a>
                         @endcan
                     </div>
@@ -40,11 +40,11 @@
                                role="grid" aria-describedby="dataTable_info">
                             <thead>
                             <tr>
-                                <th>IDs</th>
-                                <th>Nomi</th>
-                                <th>Sarlavha</th>
-                                <th>Ruxsatlar</th>
-                                <th class="w-25">Amallar</th>
+                                <th>ID</th>
+                                <th>{{ __('messages.name') }}</th>
+                                <th>{{ __('messages.title') }}</th>
+                                <th>{{ __('messages.permissions.title') }}</th>
+                                <th class="w-25">{{ __('messages.action') }}</th>
                             </tr>
                             </thead>
                             <tbody>
