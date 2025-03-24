@@ -5,7 +5,6 @@
             <ul class="nav sidebar-toggle nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview"
                 role="menu" data-accordion="true">
 
-                <!-- ✅ Bosh sahifa -->
 
                 <li class="nav-item">
 
@@ -16,7 +15,6 @@
                     </a>
                 </li>
 
-                <!-- ✅ Ruxsatlar bo'limi -->
                 <li class="nav-item">
                     <a href="#"
                        class="nav-link {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'active' : '' }}">
@@ -99,11 +97,17 @@
                     </ul>
                 </li>
 
-                <!-- Departments -->
-                <li class="nav-item"{{ request()->routeIs('departments.index') ? 'active' : '' }}">
-                    <a href="{{ route('departments.index') }}" class="nav-link">
-                        <i class="fa fa-building"></i>
-                        <span>{{ __('messages.departments.title') }}</span>
+                <li class="nav-item"{{ request()->routeIs('staffs.index') ? 'active' : '' }}">
+                    <a href="{{ route('staffs.index') }}" class="nav-link">
+                        <i class="fa fa-user"></i>
+                        <span>{{ __('messages.staffs.title') }}</span>
+                    </a>
+                </li>
+
+                <li class="nav-item"{{ request()->routeIs('duties.index') ? 'active' : '' }}">
+                    <a href="{{ route('duties.index') }}" class="nav-link">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>Navbatchilik</span>
                     </a>
                 </li>
 

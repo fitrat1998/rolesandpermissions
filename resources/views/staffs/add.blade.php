@@ -7,13 +7,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{__('messages.departments.title')}}</h1>
+                    <h1>{{__('messages.staffs.title')}}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('index') }}">{{__('messages.home')}}</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('departments.index') }}">{{__('messages.departments.title')}}</a></li>
-                        <li class="breadcrumb-item active">{{__('messages.departments.user_create')}}</li>
+                        <li class="breadcrumb-item"><a href="{{ route('departments.index') }}">{{__('messages.staffs.title')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('messages.crud.add')}}</li>
                     </ol>
                 </div>
             </div>
@@ -26,15 +26,15 @@
             <div class="col-lg-8 offset-lg-2 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">{{__('messages.departments.department_create')}}</h3>
+                        <h3 class="card-title">{{__('messages.crud.add')}}</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
 
-                        <form action="{{ route('departments.store') }}" method="post">
+                        <form action="{{ route('staffs.store') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label>{{__('messages.name')}}</label>
+                                <label>{{__('messages.users.fullname')}}</label>
                                 <input type="text" name="name"
                                        class="form-control {{ $errors->has('name') ? "is-invalid":"" }}"
                                        value="{{ old('name') }}" required>

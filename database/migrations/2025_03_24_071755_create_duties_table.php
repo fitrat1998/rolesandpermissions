@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('staff', function (Blueprint $table) {
+        Schema::create('duties', function (Blueprint $table) {
             $table->id();
-            $table->string('fullname')->nullable();
-            $table->string('photo')->nullable();
-            $table->string('position')->nullable();
+            $table->integer('staff_id');
+            $table->text('date');
+            $table->text('replaced_id')->nullable();
+            $table->string('status')->default('waiting');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('staff');
+        Schema::dropIfExists('duties');
     }
 };
