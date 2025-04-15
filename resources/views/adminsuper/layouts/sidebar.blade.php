@@ -15,48 +15,48 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="#"
-                       class="nav-link {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'active' : '' }}">
-                        <i class="fas fa-users-cog"></i>
-                        <p>
-                            {{  __('messages.system') }}
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview"
-                        style="display: {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'block' : 'none' }};">
-                        @can('permission.show')
-                            <li class="nav-item">
-                                <a href="{{ route('permissions.index') }}"
-                                   class="nav-link {{ Request::is('permission*') ? 'active' : '' }}">
-                                    <i class="fas fa-key"></i>
-                                    <p>{{  __('messages.permissions.title') }}</p>
-                                </a>
-                            </li>
-                        @endcan
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#"--}}
+{{--                       class="nav-link {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'active' : '' }}">--}}
+{{--                        <i class="fas fa-users-cog"></i>--}}
+{{--                        <p>--}}
+{{--                            {{  __('messages.system') }}--}}
+{{--                            <i class="right fas fa-angle-left"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview"--}}
+{{--                        style="display: {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'block' : 'none' }};">--}}
+{{--                        @can('permission.show')--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="{{ route('permissions.index') }}"--}}
+{{--                                   class="nav-link {{ Request::is('permission*') ? 'active' : '' }}">--}}
+{{--                                    <i class="fas fa-key"></i>--}}
+{{--                                    <p>{{  __('messages.permissions.title') }}</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        @endcan--}}
 
-                        @can('roles.show')
-                            <li class="nav-item">
-                                <a href="{{ route('roles.index') }}"
-                                   class="nav-link {{ Request::is('role*') ? 'active' : '' }}">
-                                    <i class="fas fa-user-lock"></i>
-                                    <p>{{  __('messages.roles.title') }}</p>
-                                </a>
-                            </li>
-                        @endcan
+{{--                        @can('roles.show')--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="{{ route('roles.index') }}"--}}
+{{--                                   class="nav-link {{ Request::is('role*') ? 'active' : '' }}">--}}
+{{--                                    <i class="fas fa-user-lock"></i>--}}
+{{--                                    <p>{{  __('messages.roles.title') }}</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        @endcan--}}
 
-                        @can('user.show')
-                            <li class="nav-item">
-                                <a href="{{ route('users.index') }}"
-                                   class="nav-link {{ Request::is('user*') ? 'active' : '' }}">
-                                    <i class="fas fa-user-friends"></i>
-                                    <p>{{  __('messages.users.title') }}</p>
-                                </a>
-                            </li>
-                        @endcan
-                    </ul>
-                </li>
+{{--                        @can('user.show')--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="{{ route('users.index') }}"--}}
+{{--                                   class="nav-link {{ Request::is('user*') ? 'active' : '' }}">--}}
+{{--                                    <i class="fas fa-user-friends"></i>--}}
+{{--                                    <p>{{  __('messages.users.title') }}</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        @endcan--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
 
                 <!-- Tilni tanlash bo'limi -->
                 <li class="nav-item has-treeview">
@@ -97,19 +97,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item"{{ request()->routeIs('staffs.index') ? 'active' : '' }}">
-                    <a href="{{ route('staffs.index') }}" class="nav-link">
-                        <i class="fa fa-user"></i>
-                        <span>{{ __('messages.staffs.title') }}</span>
-                    </a>
-                </li>
 
-                <li class="nav-item"{{ request()->routeIs('duties.index') ? 'active' : '' }}">
-                    <a href="{{ route('duties.index') }}" class="nav-link">
-                        <i class="fa-solid fa-calendar-check"></i>
-                        <span>Navbatchilik</span>
-                    </a>
-                </li>
 
             </ul>
         @endcanany

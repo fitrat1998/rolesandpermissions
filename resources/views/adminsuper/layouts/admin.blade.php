@@ -43,6 +43,10 @@
     <link rel="stylesheet" href="{{ asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
     <link rel="stylesheet" href="{{   asset('plugins/toastr/toastr.min.css')}}">
 
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <!-- DataTables Bootstrap 5 Integration CSS -->
@@ -62,13 +66,11 @@
             align-items: center;
             flex: 1;
 
-        @media (max-width: 768px) {
-            font-size:
+            @media (max-width: 768px) {
+                font-size: 12px
 
-        12px
-
-        ;
-        }
+            ;
+            }
 
         }
 
@@ -174,7 +176,7 @@
                 <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                    class="nav-link dropdown-toggle">
                     @if(auth()->user())
-                       <span class="btn btn-success">{{ auth()->user()->name }}</span>
+                        <span class="btn btn-success">{{ auth()->user()->name }}</span>
                     @endif
 
                 </a>
@@ -253,34 +255,34 @@
     </script>
 
 
-{{--@if (request()->is('/') || request()->is('filterdates'))--}}
-{{--    <div class="card-header" style="margin-top: 10px;">--}}
-{{--        <form method="GET" action="{{ route('filterdates.index') }}" id="date-form">--}}
-{{--            <div class="d-flex justify-content-center">--}}
-{{--                <div class="form-group">--}}
-{{--                    <input type="date" name="start_date" id="start_date" class="form-control"--}}
-{{--                           value="{{ request()->query('start_date')--}}
-{{--                               ? \Carbon\Carbon::parse(request()->query('start_date'))->format('Y-m-d')--}}
-{{--                               : \Carbon\Carbon::now()->startOfMonth()->format('Y-m-d') }}"--}}
-{{--                           style="width: 250px;">--}}
-{{--                </div>--}}
-{{--                <div class="form-group ml-2">--}}
-{{--                    <input type="date" name="end_date" id="end_date" class="form-control"--}}
-{{--                           value="{{ request()->query('end_date')--}}
-{{--                               ? \Carbon\Carbon::parse(request()->query('end_date'))->format('Y-m-d')--}}
-{{--                               : \Carbon\Carbon::now()->format('Y-m-d') }}"--}}
-{{--                           style="width: 250px;">--}}
-{{--                </div>--}}
+    {{--@if (request()->is('/') || request()->is('filterdates'))--}}
+    {{--    <div class="card-header" style="margin-top: 10px;">--}}
+    {{--        <form method="GET" action="{{ route('filterdates.index') }}" id="date-form">--}}
+    {{--            <div class="d-flex justify-content-center">--}}
+    {{--                <div class="form-group">--}}
+    {{--                    <input type="date" name="start_date" id="start_date" class="form-control"--}}
+    {{--                           value="{{ request()->query('start_date')--}}
+    {{--                               ? \Carbon\Carbon::parse(request()->query('start_date'))->format('Y-m-d')--}}
+    {{--                               : \Carbon\Carbon::now()->startOfMonth()->format('Y-m-d') }}"--}}
+    {{--                           style="width: 250px;">--}}
+    {{--                </div>--}}
+    {{--                <div class="form-group ml-2">--}}
+    {{--                    <input type="date" name="end_date" id="end_date" class="form-control"--}}
+    {{--                           value="{{ request()->query('end_date')--}}
+    {{--                               ? \Carbon\Carbon::parse(request()->query('end_date'))->format('Y-m-d')--}}
+    {{--                               : \Carbon\Carbon::now()->format('Y-m-d') }}"--}}
+    {{--                           style="width: 250px;">--}}
+    {{--                </div>--}}
 
-{{--                <div class="form-group ml-2">--}}
-{{--                    <button type="submit" class="btn btn-primary" style="width: 250px;">Saralash</button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </form>--}}
-{{--    </div>--}}
-{{--@endif--}}
+    {{--                <div class="form-group ml-2">--}}
+    {{--                    <button type="submit" class="btn btn-primary" style="width: 250px;">Saralash</button>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </form>--}}
+    {{--    </div>--}}
+    {{--@endif--}}
 
-<!-- Main Sidebar Container -->
+    <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ route('index') }}" class="brand-link">
@@ -310,8 +312,8 @@
 
     <div class="content-wrapper">
         <!-- Main content -->
-    @yield('content')
-    <!-- /.content -->
+        @yield('content')
+        <!-- /.content -->
     </div>
     <footer class="main-footer">
         <strong>Copyright &copy; 2024 <a href="https://t.me/Kingsherazi" target="_blank">LoiqDev</a>.</strong>
@@ -342,12 +344,13 @@
 {{--<script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap4.js')}}"></script>--}}
 {{--<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->--}}
 
+<script src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
 <!-- Twitter Bootstrap -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables Core JavaScript -->
 <script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
 <!-- DataTables Bootstrap 5 Integration -->
-<script src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
+
 
 
 <script src="{{ asset('plugins/select2/js/select2.full.min.js')}}"></script>
@@ -380,6 +383,18 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+<script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
+
+
+
 
 <script src="{{ asset('plugins/my/self.js')}}"></script>
 
@@ -396,6 +411,24 @@
     table = new DataTable('#dataTable');
 
     duallist = $('.duallistbox').bootstrapDualListbox();
+
+$(document).ready(function() {
+    $(".statistics_faculty").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "paging": true,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "buttons": [
+            "copy", "csv", "excel", "pdf", "print", "colvis"
+        ],
+        "dom": 'Bfrtip'  // B = buttons, f = search box, r = processing, t = table, i = info, p = pagination
+    }).buttons().container().appendTo('.statistics_faculty_wrapper .col-md-6:eq(0)');
+});
+
+
 </script>
 
 @if(session('success'))
@@ -551,22 +584,22 @@
 </script>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#departmentSelect').select2();
 
-        $('#departmentSelect').on('change', function() {
+        $('#departmentSelect').on('change', function () {
             var selectedValues = $(this).val();
             var allDepartmentsSelected = selectedValues.includes('all_departments');
 
             if (allDepartmentsSelected) {
                 $('#departmentSelect').val(['all_departments']).trigger('change');
-                $('#departmentSelect option').each(function() {
+                $('#departmentSelect option').each(function () {
                     if ($(this).val() !== 'all_departments') {
                         $(this).prop('disabled', true).hide();
                     }
                 });
             } else {
-                $('#departmentSelect option').each(function() {
+                $('#departmentSelect option').each(function () {
                     $(this).prop('disabled', false).show();
                 });
             }
