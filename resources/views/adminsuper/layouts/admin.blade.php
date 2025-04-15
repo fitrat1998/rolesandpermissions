@@ -428,7 +428,6 @@ $(document).ready(function() {
     }).buttons().container().appendTo('.statistics_faculty_wrapper .col-md-6:eq(0)');
 });
 
-
 </script>
 
 @if(session('success'))
